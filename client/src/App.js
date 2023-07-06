@@ -7,6 +7,7 @@ import Home from './Routes/Home'
 import AboutUs from './Routes/AboutUs'
 import ContactUs from './Routes/ContactUs/ContactUs'
 import Profile from './Routes/Profile'
+import { Admin } from './Routes/Admin'
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/about' element={<AboutUs />}></Route>
         <Route path='/contact' element={<ContactUs />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/admin' element={<Admin />}></Route>
       </Routes>
     </div>
   )

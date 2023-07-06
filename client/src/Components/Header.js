@@ -4,8 +4,9 @@ import '../App.css'
 import AuthContext from '../utils/AuthProvider'
 
 export default function Header() {
-    const {auth,setAuth} = useContext(AuthContext)
+    const {auth,setAuth,currUser} = useContext(AuthContext)
     console.log(auth)
+    console.log(currUser)
     const handleLogout=()=>{
         localStorage.clear()
         setAuth(false)
@@ -32,6 +33,14 @@ export default function Header() {
                         <li className="nav-item mx-5">
                             <Link className="nav-link nav-tab" aria-current="page" to="/profile">Profile</Link>
                         </li>
+                        {
+                            (currUser && currUser.isAdmin) ? (
+                                <li className="nav-item mx-5">
+                                    <Link className="nav-link nav-tab" aria-current="page" to="/admin">Admin</Link>
+                                </li>
+                            ):
+                            <li></li>
+                        }
                         
                         {
                             auth

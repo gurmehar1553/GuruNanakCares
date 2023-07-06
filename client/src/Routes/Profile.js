@@ -5,17 +5,20 @@ import userImg from '../assets/user.jpg'
 import { Link } from 'react-router-dom'
 import { showAppt } from '../server'
 import Footer from '../Components/Footer'
+import { Admin } from './Admin'
+
 
 export default function Profile() {
   const [prevAppt,setPrevAppt] = useState('')
   const {auth,currUser} = useContext(AuthContext)
-  console.log(currUser)
+  console.log("curruser-->",currUser)
   useEffect(()=>{
     showAppt(currUser).then((res)=>{
       console.log("------>",res)
       setPrevAppt(res)
     })
   },[])
+
   const WithoutLogin=()=>{
     return (
           <div className='row m-5' style={{height:'35vh'}}>
@@ -32,8 +35,8 @@ export default function Profile() {
         <div className='container'>
           
             {
-              (auth)? 
-                (
+              (auth)?
+                  (
                   <>
                   <div className='row m-5 p-3 justify-content-around'>
                     <div className='col-md-4 user-div'>
