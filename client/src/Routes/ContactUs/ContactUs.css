@@ -13,10 +13,10 @@
   .containerr {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 92vh;
     padding: 2rem;
     background-color: #fafafa;
-    /* overflow: hidden; */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -213,14 +213,14 @@
   .information {
     display: flex;
     color: #555;
-    margin: 0.7rem 0;
-    align-items: center;
+    /* margin: 0.7rem 0; */
+    /* align-items: center; */
     font-size: 0.95rem;
   }
   
   .iconn {
-    width: 28px;
-    margin-right: 0.7rem;
+    width: 2rem;
+    height: 100%;
   }
   
   .social-media {

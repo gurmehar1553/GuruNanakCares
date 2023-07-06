@@ -10,14 +10,16 @@ export default function WhyUs() {
   return (
     <>
         <div className='container'>
-            <div className='row m-5 p-5'>
-                <div className='col-md-6 border p-5 sec2-left'>
-                    <h1 className='text-center sec-2-head'>What makes <br></br>us unique ?</h1>
-                    <div className='d-none d-lg-block'>
-                        <img src={sec2img} alt='img' width="100%"  />
+            <div className='row py-5'>
+                <div className='col-md-6 p-3'>
+                    <div className='p-5 border sec2-left'>
+                        <h1 className='text-center sec-2-head'>What makes <br></br>us unique ?</h1>
+                        <div className='d-none d-lg-block'>
+                            <img src={sec2img} alt='img' width="100%"  />
+                        </div>
                     </div>
                 </div>
-                <div className='col-md-6'>
+                <div className='col-md-6 p-3'>
                     <div>
                         <h2 className='color-head'><img src={wellness} alt='img' /> Customized wellness plans</h2>
                         <p className='text-left'>Offer personalized wellness plans tailored to each user's specific health goals and needs, taking into account factors such as age, gender, medical history, and lifestyle habits.</p>

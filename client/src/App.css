@@ -1,27 +1,27 @@
-.hero{
-    background-image: url('../src/assets/heroimg-final.png');
-    height: 100vh;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-}
+@font-face { 
+    font-family: roboto-regular; 
+    src: url('./assets/font/Roboto-Regular.ttf'); 
+} 
 
+body{
+    overflow-x: hidden;
+    font-family: roboto-regular !important;
+}
 body::-webkit-scrollbar{
     position: absolute;
     right: 0;
     width: 12px;
-      -webkit-appearance: none;
-  }
-  body::-webkit-scrollbar-track{
-    background: transparent;
-  }
-  body::-webkit-scrollbar-thumb {
-    /* background-color: rgba(32, 209, 59, 0.888); */
-    background-color: #009688;
-    border: 1px solid #fff;
-    border-radius: 1rem;
-  }
+    -webkit-appearance: none;
+}
+body::-webkit-scrollbar-track{
+background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+/* background-color: rgba(32, 209, 59, 0.888); */
+background-color: #009688;
+border: 1px solid #fff;
+border-radius: 1rem;
+}
 
 .color-head{
     color: #006064
@@ -41,6 +41,10 @@ body::-webkit-scrollbar{
 .header-nav{
     /* background: transparent  !important; */
     background: #80CBC4  !important;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    min-height: 8vh;
 }
 
 .nav-tab{
@@ -54,22 +58,7 @@ body::-webkit-scrollbar{
     color: #006064 !important;
 }
 
-.heading-hero{
-    font-size: 80px;
-    /* font-weight: 1000; */
-    /* color: rgb(26, 13, 104); */
-    color: #000;
-}
 
-.hero-section{
-    margin: 200px;
-}
-
-.subhead-hero{
-    color: #009688;
-    font-weight: 800;
-    font-size: 50px;
-}
 
 .sec-2-head{
     font-size: 60px;
@@ -78,10 +67,6 @@ body::-webkit-scrollbar{
 
 .sec2-left{
     background-color: #80cbc4;
-}
-
-.card-styles{
-    
 }
 
 #quote-carousel {
@@ -127,7 +112,6 @@ body::-webkit-scrollbar{
 }
 .item blockquote p:before {
     content: "\f10d";
-    font-family: 'Fontawesome';
     float: left;
     margin-right: 10px;
 }

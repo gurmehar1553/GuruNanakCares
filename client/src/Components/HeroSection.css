@@ -1,0 +1,30 @@
+.hero{
+    background-image: url('../assets/HeroImageComp.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+.heading-hero{
+    font-size: 80px;
+    font-weight: 900;
+    /* font-weight: 1000; */
+    /* color: rgb(26, 13, 104); */
+    color: #000;
+}
+
+.hero-section{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate:  -50% -50%;
+    backdrop-filter: blur(30px);
+}
+
+.subhead-hero{
+    color: #009688;
+    font-weight: 800;
+    font-size: 50px;
+}

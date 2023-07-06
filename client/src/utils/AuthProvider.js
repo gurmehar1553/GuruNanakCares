@@ -8,9 +8,7 @@ export const AuthProvider = ({children}) => {
     const [currUser, setCurrUser] = useState(null)
 
     const getAuth= async ()=>{
-        const {authStatus, user,err} = await verifyAuth()
-        console.log('everythins fine')
-        console.log(err? err.message : 'no error')
+        const {authStatus, user} = await verifyAuth()
         if(authStatus){
             setAuth(true)
             setCurrUser(user)
@@ -18,7 +16,6 @@ export const AuthProvider = ({children}) => {
         else{
             setCurrUser(null)
         }
-        console.log(authStatus)
     }
 
     useEffect(()=>{
