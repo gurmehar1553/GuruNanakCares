@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, {useContext} from 'react'
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom'
 import BookAppt from './Routes/BookAppt'
 import Login from './Routes/Login'
 import Signup from './Routes/Signup'
@@ -8,21 +8,42 @@ import AboutUs from './Routes/AboutUs'
 import ContactUs from './Routes/ContactUs/ContactUs'
 import Profile from './Routes/Profile'
 import { Admin } from './Routes/Admin'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
+import AuthContext, {AuthProvider} from './utils/AuthProvider'
 
+function ProtectedRoute(){
+  const {auth} = useContext(AuthContext);
+  return(
+    <>
+      {auth
+      ?<Outlet />
+      :<Navigate to='/login' />
+      }
+    </>
+  )
+}
 
 export default function App() {
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/signup' element={<Signup />}></Route>
-        <Route path='/appointment' element={<BookAppt />}></Route>
-        <Route path='/about' element={<AboutUs />}></Route>
-        <Route path='/contact' element={<ContactUs />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='/admin' element={<Admin />}></Route>
-      </Routes>
+      <AuthProvider>
+        <Router>
+          <Header />
+            <Routes>
+              <Route element={<ProtectedRoute />}>
+                <Route path='/profile' element={<><Profile /><Footer/></>}/>
+                <Route path='/appointment' element={<><BookAppt /><Footer/></>}/>
+              </Route>
+              <Route path='/' element={<><Home /><Footer/></>}/>
+              <Route path='/about' element={<><AboutUs /><Footer/></>}/>
+              <Route path='/contact' element={<ContactUs />}/>
+              <Route path='/login' element={<Login />}/>
+              <Route path='/signup' element={<Signup />}/>
+              <Route path='/admin' element={<Admin />}></Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </div>
   )
 }

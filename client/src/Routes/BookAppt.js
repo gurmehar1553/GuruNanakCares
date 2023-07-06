@@ -1,8 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import  'bootstrap/dist/css/bootstrap.min.css';
-
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
 import { bookAppt } from '../server';
 import AuthContext from '../utils/AuthProvider';
 import apptIcon from '../assets/appt-icon.png'
@@ -34,7 +31,6 @@ export default function BookAppt() {
 
   return (
     <>
-      <Header />
       <div className='appt-bg'>
         <div className=' head-appt'>
           <h1 className='p-5 text-center'><img src={apptIcon} alt="" /> Book Your Appointment</h1>
@@ -159,7 +155,6 @@ export default function BookAppt() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import AuthContext from '../utils/AuthProvider'
-import Header from '../Components/Header'
 import userImg from '../assets/user.jpg'
-import { Link } from 'react-router-dom'
 import { showAppt } from '../server'
 import Footer from '../Components/Footer'
 import { Admin } from './Admin'
@@ -30,8 +28,6 @@ export default function Profile() {
   }
   return (
     <>
-
-      <Header />
         <div className='container'>
           
             {
@@ -70,9 +66,7 @@ export default function Profile() {
                   </>
                 ) : <WithoutLogin />
             } 
-            
           </div>
-          <Footer />
     </>
   )
 }

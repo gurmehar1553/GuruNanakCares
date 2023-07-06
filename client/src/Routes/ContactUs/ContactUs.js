@@ -7,9 +7,8 @@ import fb from '../../assets/fb.png';
 import inst from '../../assets/inst.png';
 import li from '../../assets/li.png';
 import tw from '../../assets/tw.png';
-import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
 import { sendMsg } from "../../server";
+import {Link} from "react-router-dom";
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -36,7 +35,7 @@ function focusFunc() {
 
 function blurFunc() {
   let parent = this.parentNode;
-  if (this.value == "") {
+  if (this.value === "") {
     parent.classList.remove("focus");
   }
 }
@@ -47,7 +46,6 @@ inputs.forEach((input) => {
 });
   return (
     <div>
-        <Header />
         <div className="containerr">
       <span className="big-circle"></span>
       <img src="img/shape.png" className="square" alt="" />
@@ -60,15 +58,15 @@ inputs.forEach((input) => {
 
           <div className="info">
             <div className="information">
-              <img className="iconn" src={location} alt='img'/>
+              <img className="iconn me-2" src={location} alt='img'/>
               <p>Near gagan chownk, Street no-4, Rajpura, Punjab.</p>
             </div>
             <div className="information">
-              <img className="iconn" src={email} alt='img'/>
+              <img className="iconn me-2" src={email} alt='img'/>
               <p>healthcarewellnesshub@gmail.com</p>
             </div>
             <div className="information">
-              <img className="iconn" src={phone} alt='img'/>
+              <img className="iconn me-2" src={phone} alt='img'/>
               <p>9867541203</p>
             </div>
           </div>
@@ -76,19 +74,19 @@ inputs.forEach((input) => {
           <div className="social-media">
             <p>Connect with us :</p>
             <div className="social-icons">
-              <a href="#">
+              <Link to='/'>
                 <img className="iconn" src={fb} alt='img'/>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to='/'>
               <img className="iconn" src={tw} alt='img'/>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to='/'>
               <img className="iconn" src={inst} alt='img'/>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to='/'>
                 <i className="fab fa-linkedin-in"></i>
                 <img className="iconn" src={li} alt='img'/>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -97,7 +95,7 @@ inputs.forEach((input) => {
           <span className="circle one"></span>
           <span className="circle two"></span>
 
-          <form onSubmit={sendMessage} autocomplete="off">
+          <form onSubmit={sendMessage} autoComplete="off">
             <h3 className="title">Contact us</h3>
             <div className="input-container">
               <input type="text" name="name" id="name" className="input" placeholder="Name" onChange={handleChange} required />
@@ -116,7 +114,6 @@ inputs.forEach((input) => {
         </div>
       </div>
     </div>
-    <Footer />
     </div>
   )
 }

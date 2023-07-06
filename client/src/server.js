@@ -42,6 +42,7 @@ const showAppt = async (newObj)=>{
 
 const sendMsg = async (newObj)=>{
     const req=await axios.post(URL+'sendMsg',newObj);
+    return req
 }
 
 export {
