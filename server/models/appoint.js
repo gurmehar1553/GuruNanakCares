@@ -24,6 +24,11 @@ const userSchema = mongoose.Schema({
     AppointmentTime:{
         type:String,
         require:true
+    },
+    confirm : {
+        type:Boolean,
+        default : false,
+        require:true
     }
 })
 

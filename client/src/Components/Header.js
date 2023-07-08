@@ -30,12 +30,6 @@ export default function Header() {
                             (currUser && currUser.isAdmin) ? (
                                 <>
                                 <li className="nav-item mx-5">
-                                    <Link className="nav-link nav-tab" aria-current="page" to="/appointment">Book an Appointment</Link>
-                                </li>
-                                <li className="nav-item mx-5">
-                                    <Link className="nav-link nav-tab" aria-current="page" to="/profile">Profile</Link>
-                                </li>
-                                <li className="nav-item mx-5">
                                     <Link className="nav-link nav-tab" aria-current="page" to="/admin">Admin</Link>
                                 </li>
                                 </>

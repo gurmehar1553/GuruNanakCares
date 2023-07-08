@@ -45,6 +45,26 @@ const sendMsg = async (newObj)=>{
     return req
 }
 
+const getAllAppt = async () =>{
+    const res = await axios.get(URL+'allAppt');
+    return res.data
+}
+
+const getUnconfirmedAppt = async ()=>{
+    const res = await axios.get(URL + 'showUnconfirmedAppt');
+    return res.data
+}
+
+const confirmAppt = async (newObj)=>{
+    const res = await axios.post(URL + 'confirmAppt',newObj)
+    return res.data
+}
+
+const showUnconfirmedForUser = async (newObj)=>{
+    const req=await axios.post(URL+'showUnconfirmedApptUser',newObj, {headers: {Authorization : token }})
+    return req.data
+}
+
 export {
     signup,
     login,
@@ -53,5 +73,9 @@ export {
     bookAppt,
     showAppt,
     sendMsg,
+    getAllAppt,
+    getUnconfirmedAppt,
+    confirmAppt,
+    showUnconfirmedForUser,
     token
 }

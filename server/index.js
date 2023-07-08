@@ -94,13 +94,22 @@ app.get('/login',authorization, async (req,res,next)=>{
 app.post('/bookAppt', async (req,res)=>{
     const apptData = req.body
     console.log(apptData)
-    const appt = await Appointment.findOne({Email:apptData.Email})
+    // const appt = await Appointment.findOne({Email:apptData.Email})
     const newAppt = new Appointment(apptData)
     await newAppt.save()
     res.send('Booked Appointment Successfully')
 })
 
-
+app.post('/confirmAppt', async (req,res)=>{
+    const appt = req.body
+    const findAppt = await Appointment.findOne({Email : appt.Email})
+    if(findAppt !== null){
+        findAppt.confirm = true
+        const result = await findAppt.save()
+        res.send('Booked Appointment Successfully')
+    }
+    
+})
 
 app.post('/showAppt',authorization,async (req,res)=>{
     const currUser = req.authData.user
@@ -115,32 +124,30 @@ app.post('/showAppt',authorization,async (req,res)=>{
     }
 })
 
-// app.post('/login', async (req,res)=>{
-//     const {Email,Password} = req.body;
-//     const user = await User.findOne({Email})
-//     console.log(user)
-//     if(user !== null){
-//         const checkPwd = await bcrypt.compare(password,user.password)
-//         const tokenForUser = {
-//             username : user.username,
-//             id:user._id
-//         }
-//         const token = jwt.sign(tokenForUser, process.env.SECRET)
-//         if(checkPwd){
-//             return res.send({token,user})
-//         }
-//         else{
-//             return res.status(401).json({
-//                 error:"Username or password not valid"
-//             })
-//         }
+// app.post('/showUnconfirmedApptUser',authorization , async (req,res)=>{
+//     const currUser=req.authData.user
+//     const appt = await UnconfirmedAppt.findOne({Email : currUser.Email})
+//     if(appt !== null){
+//         res.json(appt)
 //     }
 //     else{
-//         return res.status(401).json({
-//             error:"Username or password not valid"
-//         })
+//         res.send(false)
 //     }
 // })
+
+app.get('/allAppt', async (req,res)=>{
+    const appt = await Appointment.find({})
+    res.json(appt)
+})
+
+app.get('/showUnconfirmedAppt' , async (req,res)=>{
+    const appt = await Appointment.find({})
+    const data = appt.filter(a=>{
+        return a.confirm===false
+    })
+    console.log(data)
+    res.json(data)
+})
 
 app.post('/sendMsg' , async (req,res) => {
     console.log(req);

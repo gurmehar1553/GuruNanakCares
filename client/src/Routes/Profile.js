@@ -49,6 +49,10 @@ export default function Profile() {
                           <p>Patient's name: {prevAppt.FirstName + " " + prevAppt.LastName}</p>
                           <p>Appointment Date: {prevAppt.AppointmentDate}</p>
                           <p>Appointment Time: {prevAppt.AppointmentTime}hrs</p>
+                          <p>Appointment Status : {
+                              (prevAppt.confirm)?'Confirmed':'Pending'
+                            }
+                          </p>
                         </div>
                       }
                       
