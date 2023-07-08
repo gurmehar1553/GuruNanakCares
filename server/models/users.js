@@ -19,7 +19,11 @@ const userSchema = mongoose.Schema({
     },
     isAdmin:{
         type:Boolean
-    }
+    },
+    appointments:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Appointment'
+    }]
 })
 
 const User = mongoose.model('User',userSchema)

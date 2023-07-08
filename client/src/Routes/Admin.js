@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Admin.css'
-import { confirmAppt, getAllAppt, getUnconfirmedAppt, removeFromUnconfirmedAppt } from '../server'
+import { confirmAppt, getAllAppt, getUnconfirmedAppt, rejectAppt, removeFromUnconfirmedAppt } from '../server'
 
 const Admin = () => {
     const [apptData, setApptData] = useState([])
@@ -27,6 +27,12 @@ const Admin = () => {
         console.log(appt)
         const res1 = await confirmAppt(appt)
         window.location.reload(true)
+    }
+
+    const handleReject=async (appt)=>{
+        alert("Rejected the appointment booking")
+        const ans=await rejectAppt(appt)
+        
     }
 
   return (
@@ -61,7 +67,7 @@ const Admin = () => {
                                         <button className='btn btn-success mx-2' onClick={()=>{
                                             console.log(appt)
                                             return handleConfirm(appt)}}>Confirm</button>
-                                        <button className='btn btn-danger'>Reject</button>
+                                        <button className='btn btn-danger' onClick={()=>handleReject(appt)}>Reject</button>
                                     </td>
                                 </tr>
                             )

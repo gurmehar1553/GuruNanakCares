@@ -60,6 +60,11 @@ const confirmAppt = async (newObj)=>{
     return res.data
 }
 
+const rejectAppt=async(newObj)=>{
+    const res = await axios.post(URL + 'rejectAppt',newObj)
+    return res.data
+}
+
 const showUnconfirmedForUser = async (newObj)=>{
     const req=await axios.post(URL+'showUnconfirmedApptUser',newObj, {headers: {Authorization : token }})
     return req.data
@@ -77,5 +82,6 @@ export {
     getUnconfirmedAppt,
     confirmAppt,
     showUnconfirmedForUser,
+    rejectAppt,
     token
 }

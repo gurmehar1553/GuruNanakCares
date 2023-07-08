@@ -103,12 +103,25 @@ app.post('/bookAppt', async (req,res)=>{
 app.post('/confirmAppt', async (req,res)=>{
     const appt = req.body
     const findAppt = await Appointment.findOne({Email : appt.Email})
+    // const findUser = await User.findOne({Email : appt.Email})
+    // console.log("finduser--.",findUser)
     if(findAppt !== null){
         findAppt.confirm = true
         const result = await findAppt.save()
+        console.log("result",result)
+        // if(findUser !== null){
+        //     findUser.appointments.push(findAppt)
+        //     await findUser.save()
+        // }
         res.send('Booked Appointment Successfully')
     }
     
+})
+
+app.post('/rejectAppt',async (req,res)=>{
+    const appt = req.body
+    const reject = await Appointment.deleteOne({Email:appt.Email})
+    res.send('rejected')
 })
 
 app.post('/showAppt',authorization,async (req,res)=>{
@@ -137,7 +150,10 @@ app.post('/showAppt',authorization,async (req,res)=>{
 
 app.get('/allAppt', async (req,res)=>{
     const appt = await Appointment.find({})
-    res.json(appt)
+    const data = appt.filter(a=>{
+        return a.confirm===true
+    })
+    res.json(data)
 })
 
 app.get('/showUnconfirmedAppt' , async (req,res)=>{
