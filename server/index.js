@@ -102,7 +102,8 @@ app.post('/bookAppt', async (req,res)=>{
 
 app.post('/confirmAppt', async (req,res)=>{
     const appt = req.body
-    const findAppt = await Appointment.findOne({Email : appt.Email})
+    console.log('new appt ---- ',appt)
+    const findAppt = await Appointment.findOne({_id : appt._id})
     // const findUser = await User.findOne({Email : appt.Email})
     // console.log("finduser--.",findUser)
     if(findAppt !== null){
@@ -127,9 +128,9 @@ app.post('/rejectAppt',async (req,res)=>{
 app.post('/showAppt',authorization,async (req,res)=>{
     const currUser = req.authData.user
     console.log(currUser)
-    const prevAppt = await Appointment.findOne({Email: currUser.Email})
+    const prevAppt = await Appointment.find({Email: currUser.Email})
     console.log("I need this--->",prevAppt)
-    if(prevAppt!== null){
+    if(prevAppt.length>0){
         res.json(prevAppt)
     }
     else{

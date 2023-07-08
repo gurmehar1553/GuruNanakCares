@@ -24,6 +24,7 @@ export default function BookAppt() {
   },[currUser])
   const handleSubmit=async (e)=>{
     e.preventDefault()
+    alert("Appointment Booked! Kindly wait till the confirmation. You can check your status from profile section")
     console.log(fields)
     const res=await bookAppt(fields)
     console.log(res)

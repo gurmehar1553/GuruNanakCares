@@ -7,7 +7,7 @@ import { Admin } from './Admin'
 
 
 export default function Profile() {
-  const [prevAppt,setPrevAppt] = useState('')
+  const [prevAppt,setPrevAppt] = useState([])
   const {auth,currUser} = useContext(AuthContext)
   console.log("curruser-->",currUser)
   useEffect(()=>{
@@ -42,22 +42,30 @@ export default function Profile() {
                       <h1 className='color-head'>My Profile</h1>
                       <h2 className='color-head'>Name : {currUser.FirstName} {currUser.LastName}</h2>
                       <h2 className='color-head'>Email : {currUser.Email} </h2>
-                      <h4 className='color-head'>Appointment Schedule : </h4>
-                      {
-                        (!prevAppt)?<p>No Scheduled appointment</p>
-                        : <div>
-                          <p>Patient's name: {prevAppt.FirstName + " " + prevAppt.LastName}</p>
-                          <p>Appointment Date: {prevAppt.AppointmentDate}</p>
-                          <p>Appointment Time: {prevAppt.AppointmentTime}hrs</p>
-                          <p>Appointment Status : {
-                              (prevAppt.confirm)?'Confirmed':'Pending'
-                            }
-                          </p>
-                        </div>
-                      }
-                      
+
                     </div>
                   </div>
+                      <h4 className='color-head'>Appointment Schedule : </h4>
+                      <div className='d-flex justify-content-around'>
+                      {
+                        (prevAppt && prevAppt.length > 0)?
+                          prevAppt.map((a,i)=>{
+                            return (
+                              <div className='p-3 shadow bg-success bg-opacity-10'>
+                                  <h5>Patient Number : {i+1}</h5>
+                                  <p>Patient's name: {a.FirstName + " " + a.LastName}</p>
+                                  <p>Appointment Date: {a.AppointmentDate}</p>
+                                  <p>Appointment Time: {a.AppointmentTime}hrs</p>
+                                  <p>Appointment Status : {
+                                      (a.confirm)?'Confirmed':'Pending'
+                                    }
+                                  </p>
+                              </div>
+                            )
+                          }):
+                          <p>No Scheduled appointment</p>
+                      }
+                      </div>
                   <div className='col-md-6'>
                     <div>
                       <h2>Previous Prescriptions: </h2>
