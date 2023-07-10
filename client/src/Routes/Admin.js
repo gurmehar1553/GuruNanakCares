@@ -58,7 +58,7 @@ const Admin = () => {
     <>
         <div>
             <h2>Unconfirmed Appointments</h2>
-            <table className='table table-striped my-5'>
+            <table className='my-5'>
                 <tr>
                     <th className='admin-details'>S.No.</th>
                     <th className='admin-details'>Appointment Id</th>
