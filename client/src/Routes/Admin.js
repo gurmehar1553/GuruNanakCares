@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Admin.css'
-import { confirmAppt, getAllAppt, getUnconfirmedAppt, rejectAppt, removeFromUnconfirmedAppt } from '../server'
+import { confirmAppt, getAllAppt, getUnconfirmedAppt, rejectAppt, removeAppt, removeFromUnconfirmedAppt } from '../server'
+import  {ToastContainer, toast}  from 'react-toastify';
+
 
 const Admin = () => {
     const [apptData, setApptData] = useState([])
@@ -23,23 +25,40 @@ const Admin = () => {
     },[])
     
     const handleConfirm =async (appt)=>{
-        alert("Appointment is Confirmed !")
+        toast.success("Appointment is Confirmed !", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose : 4000
+      })
         console.log(appt)
         const res1 = await confirmAppt(appt)
-        window.location.reload(true)
+        // window.location.reload(true)
+        setTimeout(()=>{
+            window.location.reload(true)
+          },9000)
     }
 
     const handleReject=async (appt)=>{
         alert("Rejected the appointment booking")
         const ans=await rejectAppt(appt)
-        
+    }
+
+    const handleRemove = async (appt) => {
+        const res = await removeAppt(appt)
+        console.log(res)
+        toast.success('Appointment marked as done!', {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose : 4000
+      })
+      setTimeout(()=>{
+        window.location.reload(true)
+      },4000)
     }
 
   return (
     <>
         <div>
             <h2>Unconfirmed Appointments</h2>
-            <table className=' my-5'>
+            <table className='table table-striped my-5'>
                 <tr>
                     <th className='admin-details'>S.No.</th>
                     <th className='admin-details'>Appointment Id</th>
@@ -64,6 +83,7 @@ const Admin = () => {
                                     <td className='admin-details'>{appt.AppointmentDate}</td>
                                     <td className='admin-details'>{appt.AppointmentTime}</td>
                                     <td className='admin-details'>
+                                    <ToastContainer />
                                         <button className='btn btn-success mx-2' onClick={()=>{
                                             console.log(appt)
                                             return handleConfirm(appt)}}>Confirm</button>
@@ -77,7 +97,7 @@ const Admin = () => {
                 }
             </table>
             <h2 className='my-3'>Appointments</h2>
-            <table border='1' className='my-5 table table-striped table-hover'>
+            <table border='1' className='my-5 table table-striped'>
                 <tr>
                     <th className='admin-details'>S.No.</th>
                     <th className='admin-details'>Appointment Id</th>
@@ -101,7 +121,8 @@ const Admin = () => {
                                     <td className='admin-details'>{appt.AppointmentDate}</td>
                                     <td className='admin-details'>{appt.AppointmentTime}</td>
                                     <td className='admin-details'>
-                                        <button className='btn btn-warning'>Pending</button>
+                                    <ToastContainer />
+                                        <button title='Click here to mark appointment is over' className='btn btn-warning' onClick={()=>{handleRemove(appt)}}>Pending</button>
                                     </td>
                                 </tr>
                             )

@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import AuthContext from '../utils/AuthProvider'
+import userIcon from '../assets/user-icon.png'
 
 export default function Header() {
     const {auth,setAuth,currUser} = useContext(AuthContext)
+    const navigate = useNavigate()
     console.log(auth)
     console.log(currUser)
     const handleLogout=()=>{
         localStorage.clear()
         setAuth(false)
+        navigate('/')
+        window.location.reload(true)
     }
   return (
     <>
@@ -21,16 +25,16 @@ export default function Header() {
                 <div className="collapse navbar-collapse " id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li  className="nav-item mx-5">
-                            <Link className="nav-link active nav-tab" aria-current="page" to='/'>Home</Link>
+                            <Link className="nav-link active nav-tab mt-1" aria-current="page" to='/'>Home</Link>
                         </li>
                         <li  className="nav-item mx-5">
-                            <Link className="nav-link nav-tab" aria-current="page" to="/contact">Contact Us</Link>
+                            <Link className="nav-link nav-tab mt-1" aria-current="page" to="/contact">Contact Us</Link>
                         </li>
                         {
                             (currUser && currUser.isAdmin) ? (
                                 <>
                                 <li className="nav-item mx-5">
-                                    <Link className="nav-link nav-tab" aria-current="page" to="/admin">Admin</Link>
+                                    <Link className="nav-link nav-tab mt-1" aria-current="page" to="/admin">Admin</Link>
                                 </li>
                                 </>
                             ):
@@ -42,23 +46,24 @@ export default function Header() {
                             ? (
                                 <>
                                     <li  className="nav-item mx-5">
-                                        <Link className="nav-link nav-tab" aria-current="page" to="/appointment">Book an Appointment</Link>
+                                        <Link className="nav-link nav-tab mt-1" aria-current="page" to="/appointment">Book an Appointment</Link>
                                     </li>
                                     <li  className="nav-item mx-5">
-                                        <button className="nav-link btn btn-outline-danger nav-tab" onClick={handleLogout}>Logout</button>
+                                        <button className="nav-link btn btn-outline-danger nav-tab mt-1" onClick={handleLogout}>Logout</button>
                                     </li>
                                     <li  className="nav-item mx-5">
-                                        <Link className="nav-link nav-tab" aria-current="page" to="/profile">Profile</Link>
+                                        <Link className="nav-link nav-tab" aria-current="page" to="/profile">
+                                        <img src={userIcon} alt='profile'/></Link>
                                     </li>
                                 </>
                                 )
                             : (
                                 <>
                                 <li  className="nav-item mx-5">
-                                    <Link className="nav-link nav-tab" to="/login">Login</Link>
+                                    <Link className="nav-link nav-tab mt-1" to="/login">Login</Link>
                                 </li>
                                 <li  className="nav-item mx-5">
-                                    <Link className="nav-link nav-tab" to="/signup">Signup</Link>
+                                    <Link className="nav-link nav-tab mt-1" to="/signup">Signup</Link>
                                 </li>
                                 </>
                         )

@@ -70,6 +70,11 @@ const showUnconfirmedForUser = async (newObj)=>{
     return req.data
 }
 
+const removeAppt = async (newObj)=>{
+    const req=await axios.post(URL+'apptOver',newObj);
+    return req.data
+}
+
 export {
     signup,
     login,
@@ -83,5 +88,6 @@ export {
     confirmAppt,
     showUnconfirmedForUser,
     rejectAppt,
+    removeAppt,
     token
 }

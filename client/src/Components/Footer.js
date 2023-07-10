@@ -10,7 +10,7 @@ export default function Footer() {
     <>
         <div className='p-5 border footer'>
             <div>
-                <h1 className='color-head'>HealthCare & Wellness Hub</h1>
+                <h1 className='color-head'>Guru Nanak Cares</h1>
                 <button className='btn btn-lg'><Link className='appt-link' to='/appointment'>Schedule an Appointment</Link></button>
                 <p className='text-center'>Copyrights ©2023 HealthCare & Wellness Hub. All rights reserved.</p>
                 <div className='text-center'>

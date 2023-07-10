@@ -138,6 +138,13 @@ app.post('/showAppt',authorization,async (req,res)=>{
     }
 })
 
+app.post('/apptOver', async (req,res)=>{
+    const appt = req.body
+    const ans = await Appointment.deleteOne({_id:appt._id})
+    console.log(ans)
+    res.send(true)
+})
+
 // app.post('/showUnconfirmedApptUser',authorization , async (req,res)=>{
 //     const currUser=req.authData.user
 //     const appt = await UnconfirmedAppt.findOne({Email : currUser.Email})

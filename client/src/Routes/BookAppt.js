@@ -4,6 +4,8 @@ import { bookAppt } from '../server';
 import AuthContext from '../utils/AuthProvider';
 import apptIcon from '../assets/appt-icon.png'
 import appt from '../assets/appt.png'
+import  {ToastContainer, toast}  from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function BookAppt() {
 
@@ -24,7 +26,10 @@ export default function BookAppt() {
   },[currUser])
   const handleSubmit=async (e)=>{
     e.preventDefault()
-    alert("Appointment Booked! Kindly wait till the confirmation. You can check your status from profile section")
+    toast.success("Appointment Booked! Kindly wait till the confirmation. You can check your status from profile section", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose : 4000
+})
     console.log(fields)
     const res=await bookAppt(fields)
     console.log(res)
@@ -33,6 +38,7 @@ export default function BookAppt() {
   return (
     <>
       <div className='appt-bg'>
+      <ToastContainer />
         <div className=' head-appt'>
           <h1 className='p-5 text-center'><img src={apptIcon} alt="" /> Book Your Appointment</h1>
         </div>
@@ -136,7 +142,7 @@ export default function BookAppt() {
                   </div>
                 </div>
               </div>
-              <div className="form-group row m-2">
+              {/* <div className="form-group row m-2">
                 <h5>Alternate slot : </h5>
                 <label htmlFor="alterDate" className="col-sm-2 col-form-label">Alternate Date</label>
                 <div className="col-sm-6">
@@ -146,7 +152,7 @@ export default function BookAppt() {
                 <div className="col-sm-6">
                   <input type='time' className='form-control' id='alterTime' name="alterTime" />
                 </div>
-              </div>
+              </div> */}
             </fieldset>
             <div className="form-group row m-2 my-3">
               <div className="my-3">

@@ -7,7 +7,7 @@ export default function HeroSection() {
         <div className='hero'>
             <div className='hero-section p-2'>
                 <h1 className='text-center heading-hero'>
-                  HealthCare & Wellness Hub
+                  Guru Nanak Cares
                 </h1>
                 <h2 className='text-center ms-5 ps-5 subhead-hero'>
                   .....from suffering to bliss
