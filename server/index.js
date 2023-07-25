@@ -8,6 +8,19 @@ const cors=require('cors')
 const generateAuthToken = require("./jwtTokenGen")
 const nodemailer=require('nodemailer')
 const xoauth2 = require('xoauth2')
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+const chatCompletion = await openai.createChatCompletion({
+  model: "gpt-3.5-turbo",
+  prompt: text,
+  max_tokens : 3000
+});
+console.log(chatCompletion.data.choices[0].message);
 
 // const jwt = require('jsonwebtoken')
 const authorization = require("./utils/middleware")
