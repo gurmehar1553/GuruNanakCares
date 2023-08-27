@@ -16,7 +16,6 @@ const SignUp=()=>{
     });
 	const changes=e=>{
 		setValue({...Value,[e.target.name]:e.target.value})
-		console.log(Value)
 	}
 
 

@@ -17,12 +17,10 @@ const Login=()=>{
 	const {auth,setAuth,setCurrUser} = useContext(AuthContext)
 	const changeHandler=e=>{
 		setInitital({...initial,[e.target.name]:e.target.value})
-		console.log(initial)
 	}
 
 	const handleLogin=async (e)=>{
 		e.preventDefault()
-		console.log(initial)
 			const res = await login(initial);
 			console.log("Response : ",res)
 			setToken(res.token)

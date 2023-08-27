@@ -7,29 +7,17 @@ import dr4 from '../assets/Dr4.jpg'
 
 const DoctorsData = [
   {
-    name:"Dr 1",
+    name:"Chanderpreet Singh",
     specialization:"Ortho Specialist",
     description:"Some quick example text to build on the card title and make up the bulk of the card's content.",
     img:dr1,
   },
   {
-    name:"Dr 2",
+    name:"Navjot Kaur",
     specialization:"Heart Specialist",
     description:"Some quick example text to build on the card title and make up the bulk of the card's content.",
     img:dr2,
-  },
-  {
-    name:"Dr 3",
-    specialization:"Cardiologist",
-    description:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-    img:dr3,
-  },
-  {
-    name:"Dr 4",
-    specialization:"Gynecologist",
-    description:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-    img:dr4,
-  },
+  }
 ]
 
 export default function Team() {

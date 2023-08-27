@@ -40,10 +40,6 @@ const showAppt = async (newObj)=>{
     return req.data
 }
 
-const sendMsg = async (newObj)=>{
-    const req=await axios.post(URL+'sendMsg',newObj);
-    return req
-}
 
 const getAllAppt = async () =>{
     const res = await axios.get(URL+'allAppt');
@@ -82,7 +78,6 @@ export {
     setToken,
     bookAppt,
     showAppt,
-    sendMsg,
     getAllAppt,
     getUnconfirmedAppt,
     confirmAppt,

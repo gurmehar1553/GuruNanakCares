@@ -10,14 +10,14 @@ export default function Footer() {
     <>
         <div className='p-5 border footer'>
             <div>
-                <h1 className='color-head'>Guru Nanak Cares</h1>
+                <h1 className='text-light'>Guru Nanak Cares</h1>
                 <button className='btn btn-lg'><Link className='appt-link' to='/appointment'>Schedule an Appointment</Link></button>
                 <p className='text-center'>Copyrights ©2023 HealthCare & Wellness Hub. All rights reserved.</p>
-                <div className='text-center'>
-                    <img src={insta} alt='img' />
-                    <img src={facebook} alt='img' />
-                    <img src={yt} alt='img' />
-                    <img src={telegram} alt='img' />
+                <div className='d-flex justify-content-center'>
+                    <Link to='https://www.instagram.com/gurunanakcares/'><img src={insta} alt='img' /></Link>
+                    <Link to='https://www.facebook.com/gurunanakcares/'><img src={facebook} alt='img' /></Link>
+                    <Link to='https://www.youtube.com/@GuruNanakCares'><img src={yt} alt='img' /></Link>
+                    <Link to='https://t.me/gurunanakcares'><img src={telegram} alt='img' /></Link>
                 </div>
                 
             </div>

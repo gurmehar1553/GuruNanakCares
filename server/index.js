@@ -8,19 +8,19 @@ const cors=require('cors')
 const generateAuthToken = require("./jwtTokenGen")
 const nodemailer=require('nodemailer')
 const xoauth2 = require('xoauth2')
-const { Configuration, OpenAIApi } = require("openai");
+// const { Configuration, OpenAIApi } = require("openai");
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+// const configuration = new Configuration({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
+// const openai = new OpenAIApi(configuration);
 
-const chatCompletion = await openai.createChatCompletion({
-  model: "gpt-3.5-turbo",
-  prompt: text,
-  max_tokens : 3000
-});
-console.log(chatCompletion.data.choices[0].message);
+// const chatCompletion = await openai.createChatCompletion({
+//   model: "gpt-3.5-turbo",
+//   prompt: text,
+//   max_tokens : 3000
+// });
+// console.log(chatCompletion.data.choices[0].message);
 
 // const jwt = require('jsonwebtoken')
 const authorization = require("./utils/middleware")
@@ -186,33 +186,6 @@ app.get('/showUnconfirmedAppt' , async (req,res)=>{
     res.json(data)
 })
 
-app.post('/sendMsg' , async (req,res) => {
-    console.log(req);
-    let transporter = await nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'healthcarewellnesshub@gmail.com', 
-            pass:'abc123xyz!@#'
-            }
-    });
-    let mailOptions = {
-        from: 'healthcarewellnesshub@gmail.com',
-        to: 'gurmeharkaur01@gmail.com',
-        subject: `Message from ${req.body.email}: ${req.body.subject}`,
-        text: req.body.message
-    };
-    transporter.sendMail(mailOptions, function(e, r) {
-        if (e) {
-            console.log(e);
-            res.send(false)
-        }
-        else {
-            console.log(r);
-            res.send(true)
-        }
-        transporter.close();
-        });
-})
 
 app.listen(5090,()=>{
     console.log('Server running on port 5090')

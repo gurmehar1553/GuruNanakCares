@@ -3,6 +3,11 @@
     src: url('./assets/font/Roboto-Regular.ttf'); 
 } 
 
+:root{
+    --bg : #004958;
+    --c2 : #01a4b6;
+}
+
 body{
     overflow-x: hidden;
     font-family: roboto-regular !important;
@@ -39,8 +44,8 @@ border-radius: 1rem;
 
 
 .header-nav{
-    /* background: transparent  !important; */
-    background: #80CBC4  !important;
+    /* background: #80CBC4  !important; */
+    background: var(--bg)  !important;
     position: sticky;
     top: 0;
     z-index: 10000;
@@ -49,9 +54,9 @@ border-radius: 1rem;
 
 .nav-tab{
     /* font-weight: 900; */
-    color: #000 !important;
     font-size: 20px;
     transition: all 0.2;
+    color: #fff !important;
 }
 
 .nav-tab:hover{
@@ -62,11 +67,12 @@ border-radius: 1rem;
 
 .sec-2-head{
     font-size: 60px;
-    color: #006064;
+    /* color: #006064; */
+    color: #fff;
 }
 
 .sec2-left{
-    background-color: #80cbc4;
+    background-color: var(--c2);
 }
 
 #quote-carousel {
@@ -117,7 +123,8 @@ border-radius: 1rem;
 }
 
 .footer{
-    background-color: #80cbc4;
+    background-color: var(--bg);
+    color: #fff;
 }
 
 .appt-link{

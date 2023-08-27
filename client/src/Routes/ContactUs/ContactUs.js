@@ -5,12 +5,14 @@ import location from '../../assets/map.jpeg';
 import phone from '../../assets/phone.jpeg';
 import fb from '../../assets/fb.png';
 import inst from '../../assets/inst.png';
-import li from '../../assets/li.png';
-import tw from '../../assets/tw.png';
-import { sendMsg } from "../../server";
+import yt2 from '../../assets/yt2.png'
 import {Link} from "react-router-dom";
+import emailjs from '@emailjs/browser';
+import { useRef } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const ContactUs = () => {
+  const form = useRef();
     const [formData, setFormData] = useState({
       name:'',
       email:'',
@@ -21,11 +23,21 @@ const ContactUs = () => {
     const handleChange=(e)=>{
       setFormData({...formData,[e.target.name]:e.target.value})
     }
-    const sendMessage=(e)=>{
-      e.preventDefault()
-      const res = sendMsg(formData)
-      console.log(res)
-    }
+    const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs.sendForm('service_3btbntz', 'template_vwoqrnd', form.current, 'dyiqdYdPXEgqyIR8v')
+        .then((result) => {
+            console.log(result.text);
+            toast.success("Message Sent!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+              autoClose : 4000
+        })
+            e.target.reset()
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
     const inputs = document.querySelectorAll(".input");
 
 function focusFunc() {
@@ -47,6 +59,7 @@ inputs.forEach((input) => {
   return (
     <div>
         <div className="containerr">
+        <ToastContainer />
       <span className="big-circle"></span>
       <img src="img/shape.png" className="square" alt="" />
       <div className="form">
@@ -59,33 +72,29 @@ inputs.forEach((input) => {
           <div className="info">
             <div className="information">
               <img className="iconn me-2" src={location} alt='img'/>
-              <p>Near gagan chownk, Street no-4, Rajpura, Punjab.</p>
+              <p>Gobind Colony, Rajpura, Punjab.</p>
             </div>
             <div className="information">
               <img className="iconn me-2" src={email} alt='img'/>
-              <p>healthcarewellnesshub@gmail.com</p>
+              <p>gurunanakcares@gmail.com</p>
             </div>
             <div className="information">
               <img className="iconn me-2" src={phone} alt='img'/>
-              <p>9867541203</p>
+              <p>9814104564</p>
             </div>
           </div>
 
           <div className="social-media">
             <p>Connect with us :</p>
             <div className="social-icons">
-              <Link to='/'>
+              <Link to='https://www.facebook.com/gurunanakcares/'>
                 <img className="iconn" src={fb} alt='img'/>
               </Link>
-              <Link to='/'>
-              <img className="iconn" src={tw} alt='img'/>
-              </Link>
-              <Link to='/'>
+              <Link to='https://www.instagram.com/gurunanakcares/'>
               <img className="iconn" src={inst} alt='img'/>
               </Link>
-              <Link to='/'>
-                <i className="fab fa-linkedin-in"></i>
-                <img className="iconn" src={li} alt='img'/>
+              <Link to='https://www.youtube.com/@GuruNanakCares'>
+                <img className="iconn" src={yt2} alt='img'/>
               </Link>
             </div>
           </div>
@@ -95,7 +104,7 @@ inputs.forEach((input) => {
           <span className="circle one"></span>
           <span className="circle two"></span>
 
-          <form onSubmit={sendMessage} autoComplete="off">
+          <form ref={form} onSubmit={sendEmail} autoComplete="off">
             <h3 className="title">Contact us</h3>
             <div className="input-container">
               <input type="text" name="name" id="name" className="input" placeholder="Name" onChange={handleChange} required />
